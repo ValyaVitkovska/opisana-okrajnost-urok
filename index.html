@@ -50,9 +50,9 @@
   .mascot .bubble{background:#fde047;color:var(--i900);font-weight:900;padding:6px 12px;border-radius:16px;font-size:12px;position:relative;box-shadow:0 10px 15px rgba(0,0,0,.2);border:1px solid var(--a200);white-space:nowrap;}
   .mascot .tail{position:absolute;bottom:-6px;left:24px;width:12px;height:12px;background:#fde047;transform:rotate(45deg);border-bottom:1px solid var(--a200);border-right:1px solid var(--a200);}
   .tabs{display:flex;gap:8px;overflow-x:auto;width:100%;padding-bottom:8px;}
-  .tab{display:inline-flex;align-items:center;gap:8px;padding:8px 16px;border-radius:9999px;font-size:14px;font-weight:700;white-space:nowrap;border:1px solid rgba(255,255,255,.06);background:rgba(255,255,255,.1);color:var(--pink50);cursor:pointer;transition:all .25s;outline:none;transform:scale(.96);}
-  .tab:hover{background:rgba(255,255,255,.2);color:#fff;}
-  .tab.active{background:#fff;color:var(--brand);box-shadow:0 4px 10px rgba(0,0,0,.2);border-color:#fff;transform:scale(1);}
+  .tab{display:inline-flex;align-items:center;gap:8px;padding:8px 16px;border-radius:9999px;font-size:14px;font-weight:700;white-space:nowrap;border:1px solid rgba(255,255,255,.35);background:rgba(255,255,255,.18);color:#fff;cursor:pointer;transition:all .2s;outline:none;}
+  .tab:hover{background:rgba(255,255,255,.3);}
+  .tab.active{background:#fff;color:var(--brand);box-shadow:0 4px 12px rgba(0,0,0,.28);border-color:#fff;}
   .author{margin-top:8px;text-align:center;color:var(--pink100);font-size:12px;font-weight:500;border-top:1px solid rgba(255,255,255,.1);padding-top:8px;letter-spacing:.02em;opacity:.92;}
   .author b{color:#fff;}
 
@@ -68,9 +68,11 @@
 
   /* ---------- ОСНОВНО ТЯЛО ---------- */
   main.app{flex:1;display:flex;flex-direction:column;overflow:hidden;width:100%;max-width:1280px;margin:0 auto;position:relative;}
-  .left{display:flex;flex-direction:column;width:100%;background:#fff;border-right:1px solid var(--s200);overflow-y:auto;height:100%;box-shadow:4px 0 24px rgba(0,0,0,.03);z-index:20;}
+  .left{display:flex;flex-direction:column;width:100%;background:#fff;overflow-y:auto;height:100%;z-index:20;}
   .left-pad{padding:20px;}
+  #root:not(.tab-explore) .left-pad{max-width:840px;margin:0 auto;width:100%;}
   .right{flex:1;width:100%;position:relative;background:var(--canvas);overflow:hidden;touch-action:none;display:none;height:100%;z-index:10;}
+  /* Чертежът се вижда само в таб „Чертеж" */
   #root.tab-explore .left{height:45%;border-top:1px solid var(--s200);}
   #root.tab-explore .right{display:block;height:55%;}
 
@@ -81,15 +83,14 @@
   }
   @media (min-width:1024px){
     main.app{flex-direction:row;}
-    .left{width:450px;height:100%;}
     .left-pad{padding:32px;}
-    .right{display:block;height:100%;}
-    #root.tab-explore .left{height:100%;border-top:none;}
+    .left{height:100%;}
+    #root.tab-explore .left{width:450px;height:100%;border-top:none;border-right:1px solid var(--s200);box-shadow:4px 0 24px rgba(0,0,0,.03);}
     #root.tab-explore .right{height:100%;}
     .mascot{top:-36px;right:-140px;}
   }
   @media (min-width:1280px){
-    .left{width:500px;}
+    #root.tab-explore .left{width:500px;}
     .head-top{flex-direction:row;justify-content:space-between;}
     .brand-row{width:auto;justify-content:flex-start;}
     h1.app{text-align:left;}
